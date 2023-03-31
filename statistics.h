@@ -1,5 +1,5 @@
 // Copyright 2020-2021 The jdh99 Authors. All rights reserved.
-// Í³¼ÆÄ£¿é
+// ç»Ÿè®¡æ¨¡å—
 // Authors: jdh99 <jdh821@163.com>
 
 #ifndef STATISTICS_H
@@ -8,12 +8,12 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// Í³¼ÆÏîÃû×î´ó×Ö½ÚÊı
+// ç»Ÿè®¡é¡¹åæœ€å¤§å­—èŠ‚æ•°
 #define STATISTICS_NAME_LEN_MAX 32
 
 #pragma pack(1)
 
-// Í³¼ÆÏî
+// ç»Ÿè®¡é¡¹
 typedef struct {
     char Name[STATISTICS_NAME_LEN_MAX + 1];
     int Value;
@@ -21,37 +21,37 @@ typedef struct {
 
 #pragma pack()
 
-// StatisticsLoad Ä£¿éÔØÈë
-// maxItemNum ×î´óÍ³¼ÆÏîÊıÁ¿
+// StatisticsLoad æ¨¡å—è½½å…¥
+// maxItemNum æœ€å¤§ç»Ÿè®¡é¡¹æ•°é‡
 bool StatisticsLoad(int maxItemNum);
 
-// StatisticsRegister ×¢²áÒ»¸öÍ³¼ÆÏî
-// ×¢²á³É¹¦·µ»Ø¿ÉÒÔÊ¹ÓÃµÄÍ³¼ÆÏîid,Ê§°Ü·µ»Ø-1
+// StatisticsRegister æ³¨å†Œä¸€ä¸ªç»Ÿè®¡é¡¹
+// æ³¨å†ŒæˆåŠŸè¿”å›å¯ä»¥ä½¿ç”¨çš„ç»Ÿè®¡é¡¹id,å¤±è´¥è¿”å›-1
 int StatisticsRegister(const char* name);
 
-// StatisticsAdd Í³¼ÆÏîÖµ×ÔÔö
+// StatisticsAdd ç»Ÿè®¡é¡¹å€¼è‡ªå¢
 void StatisticsAdd(int itemId);
 
-// StatisticsClear Çå³ıÍ³¼ÆÏî
+// StatisticsClear æ¸…é™¤ç»Ÿè®¡é¡¹
 void StatisticsClear(int itemId);
 
-// StatisticsAdd ÉèÖÃÍ³¼ÆÏîÖµ
+// StatisticsAdd è®¾ç½®ç»Ÿè®¡é¡¹å€¼
 void StatisticsSet(int itemId, int value);
 
-// StatisticsClear Çå³ıËùÓĞÍ³¼ÆÏî
+// StatisticsClear æ¸…é™¤æ‰€æœ‰ç»Ÿè®¡é¡¹
 void StatisticsClearAll(void);
 
-// StatisticsGetItem ¶ÁÈ¡Ä³ÏîÍ³¼Æ
-// ·µ»ØµÄÈç¹ûÊÇNULL,´ú±í¶ÁÈ¡Ê§°Ü
+// StatisticsGetItem è¯»å–æŸé¡¹ç»Ÿè®¡
+// è¿”å›çš„å¦‚æœæ˜¯NULL,ä»£è¡¨è¯»å–å¤±è´¥
 StatisticsItem* StatisticsGetItem(int itemId);
 
-// StatisticsGetItemNum ¶ÁÈ¡Í³¼ÆÏîÊı
+// StatisticsGetItemNum è¯»å–ç»Ÿè®¡é¡¹æ•°
 int StatisticsGetItemNum(void);
 
-// StatisticsOutput Êä³öÍ³¼ÆĞÅÏ¢
+// StatisticsOutput è¾“å‡ºç»Ÿè®¡ä¿¡æ¯
 void StatisticsOutput(char* out, int outSize);
 
-// StatisticsPrint ´òÓ¡Í³¼ÆĞÅÏ¢
+// StatisticsPrint æ‰“å°ç»Ÿè®¡ä¿¡æ¯
 void StatisticsPrint(void);
 
 #endif

@@ -1,5 +1,5 @@
 // Copyright 2020-2020 The TZIOT Authors. All rights reserved.
-// Í³¼ÆÄ£¿é
+// ç»Ÿè®¡æ¨¡å—
 // Authors: jdh99 <jdh821@163.com>
 
 #include "statistics.h"
@@ -19,10 +19,10 @@ static int gMaxItemNum = 0;
 static StatisticsItem* gItems = NULL;
 static int gItemsNum = 0;
 
-// StatisticsLoad Ä£¿éÔØÈë
-// maxItemNum ×î´óÍ³¼ÆÏîÊıÁ¿
+// StatisticsLoad æ¨¡å—è½½å…¥
+// maxItemNum æœ€å¤§ç»Ÿè®¡é¡¹æ•°é‡
 bool StatisticsLoad(int maxItemNum) {
-    // ²»ĞèÒªÖØ¸´ÔØÈë.Èç¹ûÖØ¸´ÔØÈëÔòÓÃ»§Êı²»µÈ·µ»ØÊ§°Ü
+    // ä¸éœ€è¦é‡å¤è½½å…¥.å¦‚æœé‡å¤è½½å…¥åˆ™ç”¨æˆ·æ•°ä¸ç­‰è¿”å›å¤±è´¥
     if (gMaxItemNum == maxItemNum) {
         LI(TAG, "load success.repeat load");
         return true;
@@ -49,8 +49,8 @@ bool StatisticsLoad(int maxItemNum) {
     return true;
 }
 
-// StatisticsRegister ×¢²áÒ»¸öÍ³¼ÆÏî
-// ×¢²á³É¹¦·µ»Ø¿ÉÒÔÊ¹ÓÃµÄÍ³¼ÆÏîid,Ê§°Ü·µ»Ø-1
+// StatisticsRegister æ³¨å†Œä¸€ä¸ªç»Ÿè®¡é¡¹
+// æ³¨å†ŒæˆåŠŸè¿”å›å¯ä»¥ä½¿ç”¨çš„ç»Ÿè®¡é¡¹id,å¤±è´¥è¿”å›-1
 int StatisticsRegister(const char* name) {
     if (gItemsNum >= gMaxItemNum) {
         LE(TAG, "%s register failed.items is too many", name);
@@ -75,7 +75,7 @@ int StatisticsRegister(const char* name) {
     return gItemsNum - 1;
 }
 
-// StatisticsAdd Í³¼ÆÏîÖµ×ÔÔö
+// StatisticsAdd ç»Ÿè®¡é¡¹å€¼è‡ªå¢
 void StatisticsAdd(int itemId) {
     if (itemId < 0 || itemId >= gItemsNum) {
         LE(TAG, "add failed!item id is wrong", itemId);
@@ -84,7 +84,7 @@ void StatisticsAdd(int itemId) {
     gItems[itemId].Value++;
 }
 
-// StatisticsClear Çå³ıÍ³¼ÆÏî
+// StatisticsClear æ¸…é™¤ç»Ÿè®¡é¡¹
 void StatisticsClear(int itemId) {
     if (itemId < 0 || itemId >= gItemsNum) {
         LE(TAG, "clear failed!item id is wrong", itemId);
@@ -93,7 +93,7 @@ void StatisticsClear(int itemId) {
     gItems[itemId].Value = 0;
 }
 
-// StatisticsAdd ÉèÖÃÍ³¼ÆÏîÖµ
+// StatisticsAdd è®¾ç½®ç»Ÿè®¡é¡¹å€¼
 void StatisticsSet(int itemId, int value) {
     if (itemId < 0 || itemId >= gItemsNum) {
         LE(TAG, "set failed!item id is wrong", itemId);
@@ -102,15 +102,15 @@ void StatisticsSet(int itemId, int value) {
     gItems[itemId].Value = value;
 }
 
-// StatisticsClear Çå³ıËùÓĞÍ³¼ÆÏî
+// StatisticsClear æ¸…é™¤æ‰€æœ‰ç»Ÿè®¡é¡¹
 void StatisticsClearAll(void) {
     for (int i = 0; i < gItemsNum; i++) {
         gItems[i].Value = 0;
     }
 }
 
-// StatisticsGetItem ¶ÁÈ¡Ä³ÏîÍ³¼Æ
-// ·µ»ØµÄÈç¹ûÊÇNULL,´ú±í¶ÁÈ¡Ê§°Ü
+// StatisticsGetItem è¯»å–æŸé¡¹ç»Ÿè®¡
+// è¿”å›çš„å¦‚æœæ˜¯NULL,ä»£è¡¨è¯»å–å¤±è´¥
 StatisticsItem* StatisticsGetItem(int itemId) {
     if (itemId < 0 || itemId >= gItemsNum) {
         LE(TAG, "get failed!item id is wrong", itemId);
@@ -119,12 +119,12 @@ StatisticsItem* StatisticsGetItem(int itemId) {
     return &gItems[itemId];
 }
 
-// StatisticsGetItemNum ¶ÁÈ¡Í³¼ÆÏîÊı
+// StatisticsGetItemNum è¯»å–ç»Ÿè®¡é¡¹æ•°
 int StatisticsGetItemNum(void) {
     return gItemsNum;
 }
 
-// StatisticsOutput Êä³öÍ³¼ÆĞÅÏ¢
+// StatisticsOutput è¾“å‡ºç»Ÿè®¡ä¿¡æ¯
 void StatisticsOutput(char* out, int outSize) {
     if (out == NULL || outSize <= 0 || gItemsNum == 0) {
         LE(TAG, "output failed.param is wrong");
@@ -144,7 +144,7 @@ void StatisticsOutput(char* out, int outSize) {
     }
 }
 
-// StatisticsPrint ´òÓ¡Í³¼ÆĞÅÏ¢
+// StatisticsPrint æ‰“å°ç»Ÿè®¡ä¿¡æ¯
 void StatisticsPrint(void) {
     for (int i = 0; i < gItemsNum; i++) {
         LI(TAG, "%s:%d", gItems[i].Name, gItems[i].Value);
