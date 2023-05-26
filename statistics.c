@@ -124,6 +124,14 @@ int StatisticsGetItemNum(void) {
     return gItemsNum;
 }
 
+// StatisticsGetItemByIndex 通过序号读取统计
+StatisticsItem* StatisticsGetItemByIndex(int index) {
+    if (index >= gItemsNum) {
+        return NULL;
+    }
+    return &gItems[index];
+}
+
 // StatisticsOutput 输出统计信息
 void StatisticsOutput(char* out, int outSize) {
     if (out == NULL || outSize <= 0 || gItemsNum == 0) {

@@ -48,6 +48,9 @@ StatisticsItem* StatisticsGetItem(int itemId);
 // StatisticsGetItemNum 读取统计项数
 int StatisticsGetItemNum(void);
 
+// StatisticsGetItemByIndex 通过序号读取统计
+StatisticsItem* StatisticsGetItemByIndex(int index);
+
 // StatisticsOutput 输出统计信息
 void StatisticsOutput(char* out, int outSize);
 
