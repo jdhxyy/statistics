@@ -156,7 +156,7 @@ void StatisticsOutput(char* out, int outSize) {
 void StatisticsPrint(void) {
     LaganLevel level = LaganGetFilterLevel();
 
-    if (level == LAGAN_LEVEL_OFF) {
+    if (level == LAGAN_LEVEL_OFF || level > LAGAN_LEVEL_INFO) {
         LaganSetFilterLevel(LAGAN_LEVEL_INFO);
     }
 
