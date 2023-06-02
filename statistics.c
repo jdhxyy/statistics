@@ -138,7 +138,7 @@ void StatisticsOutput(char* out, int outSize) {
         LE(TAG, "output failed.param is wrong");
         return;
     }
-    
+
     out[0] = '\0';
     char str[TZ_BUFFER_LEN];
     int usedSize = 0;
@@ -154,7 +154,15 @@ void StatisticsOutput(char* out, int outSize) {
 
 // StatisticsPrint 打印统计信息
 void StatisticsPrint(void) {
+    LaganLevel level = LaganGetFilterLevel();
+
+    if (level == LAGAN_LEVEL_OFF) {
+        LaganSetFilterLevel(LAGAN_LEVEL_INFO);
+    }
+
     for (int i = 0; i < gItemsNum; i++) {
         LI(TAG, "%s:%d", gItems[i].Name, gItems[i].Value);
     }
+
+    LaganSetFilterLevel(level);
 }
