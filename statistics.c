@@ -154,15 +154,7 @@ void StatisticsOutput(char* out, int outSize) {
 
 // StatisticsPrint 打印统计信息
 void StatisticsPrint(void) {
-    LaganLevel level = LaganGetFilterLevel();
-
-    if (level == LAGAN_LEVEL_OFF || level > LAGAN_LEVEL_INFO) {
-        LaganSetFilterLevel(LAGAN_LEVEL_INFO);
-    }
-
     for (int i = 0; i < gItemsNum; i++) {
         LaganRaw("%s:%d\n", gItems[i].Name, gItems[i].Value);
     }
-
-    LaganSetFilterLevel(level);
 }
