@@ -155,6 +155,6 @@ void StatisticsOutput(char* out, int outSize) {
 // StatisticsPrint 打印统计信息
 void StatisticsPrint(void) {
     for (int i = 0; i < gItemsNum; i++) {
-        LI(TAG, "%s:%d", gItems[i].Name, gItems[i].Value);
+        LaganRaw("%s:%d\n", gItems[i].Name, gItems[i].Value);
     }
 }
