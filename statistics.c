@@ -67,8 +67,16 @@ int StatisticsRegister(const char* name) {
         nameLen = STATISTICS_NAME_LEN_MAX;
     }
 
+    char* buf = TZMalloc(gMid, nameLen + 1);
+    if (buf == NULL) {
+        LE(TAG, "%s register failed.malloc fail");
+        return -1;
+    }
+
     LI(TAG, "%s register success", name);
     memset(&gItems[gItemsNum], 0, sizeof(TZMallocUser));
+
+    gItems[gItemsNum].Name = buf;
     memcpy(gItems[gItemsNum].Name, name, (size_t)nameLen);
     gItems[gItemsNum].Value = 0;
     gItemsNum++;
@@ -155,6 +163,6 @@ void StatisticsOutput(char* out, int outSize) {
 // StatisticsPrint 打印统计信息
 void StatisticsPrint(void) {
     for (int i = 0; i < gItemsNum; i++) {
-        LaganRaw("%s:%d\n", gItems[i].Name, gItems[i].Value);
+        LaganRaw("%d:%s:%d\n", i + 1, gItems[i].Name, gItems[i].Value);
     }
 }

@@ -15,8 +15,8 @@
 
 // 统计项
 typedef struct {
-    char Name[STATISTICS_NAME_LEN_MAX + 1];
-    int Value;
+    char* Name;
+    uint32_t Value;
 } StatisticsItem;
 
 #pragma pack()
