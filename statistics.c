@@ -151,7 +151,7 @@ void StatisticsOutput(char* out, int outSize) {
     char str[TZ_BUFFER_LEN];
     int usedSize = 0;
     for (int i = 0; i < gItemsNum; i++) {
-        sprintf(str, "%s:%d\n", gItems[i].Name, gItems[i].Value);
+        sprintf(str, "%s:%d\n", gItems[i].Name, (int)gItems[i].Value);
         usedSize += (int)strlen(str);
         if (usedSize >= outSize) {
             return;
